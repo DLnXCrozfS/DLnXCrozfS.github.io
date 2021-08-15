@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      15
        分钟
     </span>
   
@@ -267,7 +267,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/root/Desktop/tiegcm1.94				<span class="hljs-comment">#安装文件夹的绝对路径</span><br>/root/Desktop/tiegcm1.94/tiegcm1.94		<span class="hljs-comment">#模型文件夹的绝对路径</span><br></code></pre></td></tr></table></figure>
 
 <p>首先在 ~/.bashrc 中指定数据文件夹的位置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim ~/.bashrc<br><br><span class="hljs-comment"># 添加内容如下：</span><br><span class="hljs-built_in">export</span> TGCMDATA=<span class="hljs-variable">$PATH</span>:/root/Desktop/tiegcm1.94/tiegcm1.94_dataTGCMDATA=/root/Desktop/tiegcm1.94/tiegcm1.94_data<br><br><span class="hljs-comment"># 保存退出后重新执行 ~/.bashrc 文件</span><br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim ~/.bashrc<br><br><span class="hljs-comment"># 添加内容如下：</span><br><span class="hljs-built_in">export</span> TGCMDATA=/root/Desktop/tiegcm1.94/tiegcm1.94_data<br><br><span class="hljs-comment"># 保存退出后重新执行 ~/.bashrc 文件</span><br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
 
 <p>注意：如果安装位置不同，或者数据放在了其它位置，则需要修改上述路径</p>
 <p>修改 TIE-GCM 的 Make 配置文件 Make.pgi_hao64，这个文件在模型文件夹tiegcm1.94/scripts/Make.pgi_hao64：</p>
@@ -310,12 +310,6 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2021/08/15/hello-world/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
