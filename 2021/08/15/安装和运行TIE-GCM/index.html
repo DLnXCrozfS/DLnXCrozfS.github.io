@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Liiilsung">
+  <meta name="keywords" content="">
+  
+  <title>安装和运行TIE-GCM - Liiilsung&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="安装和运行TIE-GCM">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-15 13:20" pubdate>
+        2021年8月15日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">安装和运行TIE-GCM</h1>
+            
+            <div class="markdown-body">
+              <h2 id="安装环境和-TIE-GCM-版本"><a href="#安装环境和-TIE-GCM-版本" class="headerlink" title="安装环境和 TIE-GCM 版本"></a>安装环境和 TIE-GCM 版本</h2><ul>
+<li>操作系统：CentOS Linux 7 (Core) x86_64</li>
+<li>Shell：bash</li>
+<li>TIE-GCM 版本：1.94</li>
+</ul>
+<h2 id="下载-TIE-GCM-和数据"><a href="#下载-TIE-GCM-和数据" class="headerlink" title="下载 TIE-GCM 和数据"></a>下载 TIE-GCM 和数据</h2><p>TIE-GCM 源代码和数据在 <a target="_blank" rel="noopener" href="https://www.hao.ucar.edu/modeling/tgcm/download.php">https://www.hao.ucar.edu/modeling/tgcm/download.php</a> 下载</p>
+<p>以 root 用户登录，新建文件夹 tiegcm1.94 并进入该文件夹中操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir tiegcm1.94<br><span class="hljs-built_in">cd</span> tiegcm1.94<br></code></pre></td></tr></table></figure>
+
+<p>下载源代码和数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://www.hao.ucar.edu/modeling/tgcm/download/files/tiegcm1.94.tar.gz<br>wget https://www.hao.ucar.edu/modeling/tgcm/download/files/tiegcm1.94_data.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>解压源代码和数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxf tiegcm1.94.tar.gz<br>tar -zxf tiegcm1.94_data.tar.gz<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="下载和安装-Fortran-编译器和-NetCDF"><a href="#下载和安装-Fortran-编译器和-NetCDF" class="headerlink" title="下载和安装 Fortran 编译器和 NetCDF"></a>下载和安装 Fortran 编译器和 NetCDF</h2><p>使用 PGI Fortran 编译器，PGI Fortran 编译器是 NVIDIA HPC SDK 中的一部分</p>
+<p>最新版本的 NVIDIA HPC SDK 在 <a target="_blank" rel="noopener" href="https://developer.nvidia.com/nvidia-hpc-sdk-downloads">https://developer.nvidia.com/nvidia-hpc-sdk-downloads</a> 下载</p>
+<p>使用稍早版本（20.7），在 <a target="_blank" rel="noopener" href="https://developer.nvidia.com/nvidia-hpc-sdk-releases">https://developer.nvidia.com/nvidia-hpc-sdk-releases</a> 选择并下载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~<br>wget https://developer.download.nvidia.com/hpc-sdk/20.7/nvhpc_2020_207_Linux_x86_64_cuda_11.0.tar.gz<br>tar xpzf nvhpc_2020_207_Linux_x86_64_cuda_11.0.tar.gz<br>sudo nvhpc_2020_207_Linux_x86_64_cuda_11.0/install<br></code></pre></td></tr></table></figure>
+
+<p>在 ~/.bashrc 文件中为 NVIDIA HPC SDK 中的程序添加环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim ~/.bashrc<br><br><span class="hljs-comment"># 添加内容如下：</span><br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/20.7/compilers/lib:<span class="hljs-variable">$LD_LIBRARY_PATH</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/opt/nvidia/hpc_sdk/Linux_x86_64/20.7/compilers/bin<br><br><span class="hljs-comment"># 保存退出后重新执行 ~/.bashrc 文件</span><br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
+
+<p>注意：如果安装了不同版本的 NVIDIA HPC SDK，或指定了不同的安装位置，则需要修改上述路径</p>
+<p>接着安装 NetCDF，推荐使用 yum 包管理器安装，可以方便地解决依赖和版本问题</p>
+<p>首先为 yum 添加 EPEL 源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y epel-release<br></code></pre></td></tr></table></figure>
+
+<p>安装 netcdf-devel 和 netcdf-fortran：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install netcdf-devel<br>yum install netcdf-fortran<br></code></pre></td></tr></table></figure>
+
+<p>NetCDF 4.2 版本以上，NetCDF-C 和 NetCDF-Fortran 是分开的。需要先安装 NetCDF-C，再安装 NetCDF-Fortran。有关 NetCDF 的详细信息，可以参阅 <a target="_blank" rel="noopener" href="https://www.unidata.ucar.edu/software/netcdf/docs/building_netcdf_fortran.html">https://www.unidata.ucar.edu/software/netcdf/docs/building_netcdf_fortran.html</a></p>
+<p>NetCDF 官网 <a target="_blank" rel="noopener" href="https://www.unidata.ucar.edu/software/netcdf/">https://www.unidata.ucar.edu/software/netcdf/</a> 推荐使用源码编译安装，但这种方式需要提前安装 zlib、HDF5 和 curl 等依赖，且编译过程复杂、可能报错。使用 yum 包管理器安装 NetCDF 时，能自动安装依赖项</p>
+<h2 id="配置-TIE-GCM"><a href="#配置-TIE-GCM" class="headerlink" title="配置 TIE-GCM"></a>配置 TIE-GCM</h2><p>进入 TIE-GCM 的安装文件夹 tiegcm1.94，里面应当至少有同名文件夹 tiegcm1.94 及数据文件夹 tiegcm1.94_data —— “安装文件夹”指代前者，而 “模型文件夹” 指代后者。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/root/Desktop/tiegcm1.94				<span class="hljs-comment">#安装文件夹的绝对路径</span><br>/root/Desktop/tiegcm1.94/tiegcm1.94		<span class="hljs-comment">#模型文件夹的绝对路径</span><br></code></pre></td></tr></table></figure>
+
+<p>首先在 ~/.bashrc 中指定数据文件夹的位置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim ~/.bashrc<span class="hljs-comment"># 添加内容如下：export TGCMDATA=$PATH:/root/Desktop/tiegcm1.94/tiegcm1.94_dataTGCMDATA=/root/Desktop/tiegcm1.94/tiegcm1.94_data# 保存退出后重新执行 ~/.bashrc 文件source ~/.bashrc</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：如果安装位置不同，或者数据放在了其它位置，则需要修改上述路径</p>
+<p>修改 TIE-GCM 的 Make 配置文件 Make.pgi_hao64，这个文件在模型文件夹tiegcm1.94/scripts/Make.pgi_hao64：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim Make.pgi_hao64<span class="hljs-comment"># 修改如下内容：F90      = /opt/nvidia/hpc_sdk/Linux_x86_64/20.7/compilers/bin/pgf90MPIF90   = /opt/nvidia/hpc_sdk/Linux_x86_64/20.7/comm_libs/mpi/bin/mpif90MPIRUN   = /opt/nvidia/hpc_sdk/Linux_x86_64/20.7/comm_libs/mpi/bin/mpirunLIBS     = -lhdf5_hl -lhdf5 -lsz -L/usr/lib64 -lz -lnetcdffLIB_NETCDF = /usr/libINC_NETCDF = /usr/include</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：如果 NVIDIA HPC SDK 或 NetCDF 的安装位置不同，则需要修改上述路径</p>
+<p>回到安装文件夹内，修改 tiegcm-linux.job 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim tiegcm-linux.job<span class="hljs-comment"># 修改如下内容：set modeldir = /root/Desktop/tiegcm1.94/tiegcm1.94set make     = /root/Desktop/tiegcm1.94/tiegcm1.94/scripts/Make.pgi_hao64set input    = /root/Desktop/tiegcm1.94/tiegcm1.94/scripts/tiegcm_default.inpset mpi      = FALSE</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：如果安装位置不同，则需要修改上述路径</p>
+<p>mpi 不建议使用 root 身份运行，否则将报错，所以此处设置为 FALSE</p>
+<h2 id="运行-TIE-GCM"><a href="#运行-TIE-GCM" class="headerlink" title="运行 TIE-GCM"></a>运行 TIE-GCM</h2><p>在安装文件夹内，执行 tiegcm-linux.job 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./tiegcm-linux.job<br></code></pre></td></tr></table></figure>
+
+<p>模型将使用 PGI Fortran 编译器编译、链接、运行并生成输出，该过程可能耗时数分钟</p>
+<p>完成后，在安装文件夹内将生成新文件夹 tiegcm-linux 和一个输出文件 tiegcm.out</p>
+<p>注意：如果在编译等环节报错，调整配置后重新运行 tiegcm-linux.job 文件，建议先删除文件夹 tiegcm-linux 和输出文件 tiegcm.out</p>
+<p>如果程序正常运行，tiegcm.out 文件的末尾会含有 NORMAL EXIT 字样</p>
+<h2 id="为非-root-用户安装和运行-TIE-GCM"><a href="#为非-root-用户安装和运行-TIE-GCM" class="headerlink" title="为非 root 用户安装和运行 TIE-GCM"></a>为非 root 用户安装和运行 TIE-GCM</h2><p>以非 root 用户运行 TIE-GCM 可以使用 mpi 做并行计算，安装和运行方法与上述各节所述类似，请注意替换相应的路径，并视需要在各项命令前添加 <code>sudo</code></p>
+<p>非 root 用户开启 mpi，需要修改安装文件夹内的 tiegcm-linux.job 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim tiegcm-linux.job<span class="hljs-comment"># 除修改“配置 TIE-GCM”一节中所述内容外，还需要修改如下内容：set mpi      = TRUEset nproc    = 4# nproc 一项可以指定并行计算使用的核心数量</span><br></code></pre></td></tr></table></figure>
+
+<p>同样地，如果程序正常运行，tiegcm.out 文件的末尾会含有 NORMAL EXIT 字样</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/15/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
